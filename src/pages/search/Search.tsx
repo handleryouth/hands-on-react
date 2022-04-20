@@ -1,10 +1,12 @@
 import { useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { CustomGif, Searchbar } from "components";
+import { RootState } from "lib";
+import { GIFResponseData } from "types";
 
 function Search() {
-  const [responseData, setResponseData] = useState([]);
-  const { searchValue } = useSelector((state) => state.search);
+  const [responseData, setResponseData] = useState<GIFResponseData[]>([]);
+  const { searchValue } = useSelector((state: RootState) => state.search);
 
   const handleSearch = useCallback(
     async (e) => {
@@ -13,7 +15,9 @@ function Search() {
         `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_KEY}&q=${searchValue}&limit=12`
       )
         .then((response) => response.json())
-        .then((data) => setResponseData(data.data));
+        .then((data) => {
+          setResponseData(data.data);
+        });
     },
     [searchValue]
   );

@@ -1,6 +1,7 @@
 import { Home, Search, Trending } from "pages";
+import { RoutesProps } from "types";
 
-export const routesDirectory = [
+export const routesDirectory: RoutesProps[] = [
   {
     path: "/",
     component: Home,

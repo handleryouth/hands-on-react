@@ -5,6 +5,12 @@ export const rootReducer = combineReducers({
   search: searchSlice.reducer,
 });
 
-export const store = configureStore({
-  reducer: rootReducer,
-});
+export type RootState = ReturnType<typeof rootReducer>;
+
+export const createStore = () => {
+  return configureStore({
+    reducer: rootReducer,
+  });
+};
+
+export const store = createStore();

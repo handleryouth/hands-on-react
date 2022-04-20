@@ -1,9 +1,10 @@
 import axios from "axios";
 import { CustomGif } from "components";
 import { useEffect, useState } from "react";
+import { GIFResponseData } from "types";
 
 function Trending() {
-  const [responseData, setResponseData] = useState([]);
+  const [responseData, setResponseData] = useState<GIFResponseData[]>([]);
   useEffect(() => {
     axios
       .get("https://api.giphy.com/v1/gifs/trending", {
@@ -22,7 +23,7 @@ function Trending() {
         <CustomGif
           key={gif.id}
           title={gif.title}
-          url={gif.images.downsized.url}
+          url={gif.images.original.url}
         />
       ))}
     </div>
