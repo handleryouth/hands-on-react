@@ -23,4 +23,5 @@ export interface RoutesProps {
   path: string;
   exact?: boolean;
   component: () => JSX.Element;
+  name: string;
 }
